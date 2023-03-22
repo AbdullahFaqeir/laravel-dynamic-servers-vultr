@@ -15,9 +15,8 @@ class CreateInstanceRequest extends Request implements HasBodyContract
 
     public function __construct(
         protected readonly string $region,
-        protected readonly array  $configuration
-    )
-    {
+        protected readonly array $configuration
+    ) {
     }
 
     public function resolveEndpoint(): string
@@ -29,7 +28,7 @@ class CreateInstanceRequest extends Request implements HasBodyContract
     {
         return [
             'region' => $this->region,
-            ...$this->configuration
+            ...$this->configuration,
         ];
     }
 }

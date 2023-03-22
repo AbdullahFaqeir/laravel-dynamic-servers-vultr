@@ -3,18 +3,18 @@
 use AbdullahFaqeir\LaravelDynamicServersVultr\Enums\VultrPowerStatus;
 use AbdullahFaqeir\LaravelDynamicServersVultr\Enums\VultrServerStatus;
 use AbdullahFaqeir\LaravelDynamicServersVultr\Vultr\VultrServer;
-use Illuminate\Support\Str;
 use AbdullahFaqeir\LaravelDynamicServersVultr\Vultr\VultrServerProvider;
+use Illuminate\Support\Str;
 use Spatie\DynamicServers\Models\Server;
 
 beforeEach(function () {
-    if (!$this->vultrHasBeenConfigured()) {
+    if (! $this->vultrHasBeenConfigured()) {
         $this->markTestSkipped('Vultr not configured');
     }
 
     $server = Server::factory()->create([
         'provider' => 'vultr',
-        'type' => 'small'
+        'type' => 'small',
     ])->addMeta('server_properties.uuid', Str::uuid());
 
     $vultrServer = new VultrServer(
@@ -34,7 +34,6 @@ beforeEach(function () {
 it('can delete instance', function () {
     $this->vultrServerProvider->deleteServer();
 })->expectNotToPerformAssertions();
-
 
 it('can determine that the server has been deleted', function () {
     expect($this->vultrServerProvider->hasBeenDeleted())->toBeTrue();
@@ -67,4 +66,3 @@ it('can update instance meta data', function () {
 it('can create instance on Vultr', function () {
     $this->vultrServerProvider->createServer();
 })->expectNotToPerformAssertions();
-

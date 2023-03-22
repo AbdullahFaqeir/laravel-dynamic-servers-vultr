@@ -2,10 +2,10 @@
 
 namespace AbdullahFaqeir\LaravelDynamicServersVultr\Tests;
 
-use Illuminate\Support\Str;
-use Orchestra\Testbench\TestCase as Orchestra;
 use AbdullahFaqeir\LaravelDynamicServersVultr\LaravelDynamicServersVultrServiceProvider;
 use AbdullahFaqeir\LaravelDynamicServersVultr\Tests\TestSupport\ServerProviders\DummyServerProvider;
+use Illuminate\Support\Str;
+use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\DynamicServers\DynamicServersServiceProvider;
 use Spatie\DynamicServers\Facades\DynamicServers;
 use Spatie\DynamicServers\Models\Server;
@@ -32,7 +32,7 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        $migration = include __DIR__ . '/../vendor/spatie/laravel-dynamic-servers/database/migrations/create_dynamic_servers_table.php';
+        $migration = include __DIR__.'/../vendor/spatie/laravel-dynamic-servers/database/migrations/create_dynamic_servers_table.php';
 
         $migration->up();
     }
@@ -55,16 +55,16 @@ class TestCase extends Orchestra
             ->configuration(function (Server $server) {
                 return [
                     'label' => Str::slug($server->name),
-                    "region" => $server->option('region'),
+                    'region' => $server->option('region'),
                     'plan' => 'vc2-1c-1gb',
-                    "vpc_uuid" => '62420e18-5628-4f6c-9ee4-aca48a5a7c17',
+                    'vpc_uuid' => '62420e18-5628-4f6c-9ee4-aca48a5a7c17',
                     'os_id' => 1743,
                     'enable_ipv6' => true,
                     'backups' => 'disabled',
                     'tags' => [
                         'tag1',
-                        'tag2'
-                    ]
+                        'tag2',
+                    ],
                 ];
             });
 

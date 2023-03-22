@@ -17,7 +17,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Spatie\DynamicServers\ServerProviders\ServerProvider;
 
-
 class VultrServerProvider extends ServerProvider
 {
     /**
@@ -55,6 +54,7 @@ class VultrServerProvider extends ServerProvider
     public function hasStarted(): bool
     {
         $instance = $this->getInstance();
+
         return $instance->serverStatus === VultrServerStatus::OK && $instance->status === VultrServerStatus::ACTIVE;
     }
 
@@ -136,7 +136,7 @@ class VultrServerProvider extends ServerProvider
             )
         );
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             throw CannotGetVultrServerDetails::make($this->server, $response);
         }
 

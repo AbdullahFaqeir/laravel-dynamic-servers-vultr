@@ -26,6 +26,6 @@ class LaravelDynamicServersVultrServiceProvider extends PackageServiceProvider
                         $installCommand->info("We've added app\Providers\VultrEventServiceProvider to your project.");
                         $installCommand->info('Feel free to customize it to your needs.');
                     });
-            });;
+            });
     }
 }
