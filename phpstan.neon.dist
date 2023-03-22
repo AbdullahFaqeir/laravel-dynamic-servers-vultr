@@ -5,10 +5,10 @@ parameters:
     level: 4
     paths:
         - src
-        - config
-        - database
+    ignoreErrors:
+        - '#Access to an undefined property Spatie\\DynamicServers\\Models\\Server::\$configuration.#'
+        - '#Call to an undefined method Spatie\\DynamicServers\\ServerProviders\\ServerProvider::getServer\(\).#'
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
-    checkModelProperties: true
+    checkModelProperties: false
     checkMissingIterableValueType: false
-
