@@ -15,8 +15,7 @@ class GetCurrentServerCount extends Request implements HasBodyContract
 
     public function __construct(
         protected readonly string $region,
-    )
-    {
+    ) {
     }
 
     public function resolveEndpoint(): string

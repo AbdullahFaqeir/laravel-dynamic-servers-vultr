@@ -8,14 +8,13 @@ use AbdullahFaqeir\LaravelDynamicServersVultr\Enums\VultrServerStatus;
 class VultrServer
 {
     public function __construct(
-        public string            $id,
-        public string            $title,
-        public string            $ip,
+        public string $id,
+        public string $title,
+        public string $ip,
         public VultrServerStatus $status,
         public VultrServerStatus $serverStatus,
-        public VultrPowerStatus  $powerStatus
-    )
-    {
+        public VultrPowerStatus $powerStatus
+    ) {
     }
 
     public static function fromApiPayload(array $payload): self
@@ -38,7 +37,7 @@ class VultrServer
             'ip' => $this->ip,
             'status' => $this->status->value,
             'server_status' => $this->serverStatus->value,
-            'power_status' => $this->powerStatus->value
+            'power_status' => $this->powerStatus->value,
         ];
     }
 }

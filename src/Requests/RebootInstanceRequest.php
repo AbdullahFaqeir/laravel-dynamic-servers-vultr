@@ -15,8 +15,7 @@ class RebootInstanceRequest extends Request implements HasBodyContract
 
     public function __construct(
         protected readonly string $instanceId,
-    )
-    {
+    ) {
     }
 
     public function resolveEndpoint(): string

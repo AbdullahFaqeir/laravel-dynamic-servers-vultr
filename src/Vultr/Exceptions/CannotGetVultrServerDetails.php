@@ -9,10 +9,9 @@ use Spatie\DynamicServers\Models\Server;
 class CannotGetVultrServerDetails extends Exception
 {
     public static function make(
-        Server   $server,
+        Server $server,
         Response $response
-    ): self
-    {
+    ): self {
         $reason = $response->json('error');
 
         return new self("Could not find instance: $reason");
